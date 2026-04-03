@@ -22,3 +22,14 @@
 [![](https://visitcount.itsvg.in/api?id=eqbalbaharemon&icon=0&color=0)](https://visitcount.itsvg.in)
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+
+---
+## 🚀 Web Analytics & Tracking Portfolio
+
+| GTM Setup & Tags | Meta Events Manager |
+| :---: | :---: |
+| ![GTM](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%201.png) | ![Meta](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%204%20-%20Copy.png) |
+
+| TikTok Event Activity | Server-side Hosting |
+| :---: | :---: |
+| ![TikTok](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%205%20-%20Copy.png) | ![Stape](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%206.png) |
