@@ -24,7 +24,7 @@
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
 
 ---
-## 🚀 Web Analytics & Tracking Portfolio
+## 🚀 Web Analytics & Tracking Portfolio (Full View)
 
 | GTM Setup & Tags | Meta Events Manager |
 | :---: | :---: |
@@ -33,3 +33,7 @@
 | TikTok Event Activity | Server-side Hosting |
 | :---: | :---: |
 | ![TikTok](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%205%20-%20Copy.png) | ![Stape](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%206.png) |
+
+| Additional GTM Tags | GA4 Event Tracking |
+| :---: | :---: |
+| ![GTM 2](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%202%20-%20Copy.png) | ![GTM 3](Meta%20Google%20Pixel%20Tiktok%20API%20CAPI%20GA4%20TAG%203.png) |
