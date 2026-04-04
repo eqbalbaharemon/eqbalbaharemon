@@ -106,7 +106,6 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
 
 
 ```The Code
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,8 +113,18 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced YouTube Listener</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background-color: #f9f9f9; }
-        .video-container { margin-bottom: 25px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 30px; 
+            background-color: #f9f9f9; 
+        }
+        .video-container { 
+            margin-bottom: 25px; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            display: inline-block; 
+        }
         #tracking-log { 
             background: #1a1a1a; 
             color: #32ff7e; 
@@ -126,7 +135,11 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
             font-family: 'Courier New', Courier, monospace;
             border: 1px solid #333;
         }
-        .log-entry { border-bottom: 1px solid #333; padding: 5px 0; }
+        .log-entry { 
+            border-bottom: 1px solid #333; 
+            padding: 5px 0; 
+        }
+        h2 { color: #333; }
     </style>
 </head>
 <body>
@@ -134,9 +147,8 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
     <h2>YouTube Event Tracking System</h2>
     <p>Any YouTube video on this page is automatically tracked below.</p>
     
-    <!-- Video Example -->
     <div class="video-container">
-        <iframe width="560" height="315" src="[https://www.youtube.com/embed/dQw4w9WgXcQ](https://www.youtube.com/embed/dQw4w9WgXcQ)" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <div id="tracking-log">
@@ -158,7 +170,7 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
 
             // Load YouTube API
             const tag = document.createElement('script');
-            tag.src = "[https://www.youtube.com/iframe_api](https://www.youtube.com/iframe_api)";
+            tag.src = "https://www.youtube.com/iframe_api";
             tag.async = true;
             const firstScriptTag = document.getElementsByTagName('script')[0];
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -167,7 +179,7 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
                 const iframes = document.getElementsByTagName('iframe');
                 for (let i = 0; i < iframes.length; i++) {
                     let src = iframes[i].src;
-                    if (src.includes('[youtube.com/embed/](https://youtube.com/embed/)')) {
+                    if (src.includes('youtube.com/embed/')) {
                         // Ensure JS API is enabled
                         if (!src.includes('enablejsapi=1')) {
                             iframes[i].src = src + (src.includes('?') ? '&' : '?') + 'enablejsapi=1';
@@ -192,8 +204,8 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
     </script>
 </body>
 </html>
-
 ```
+
 
 
 ### 💻 Tech Stack:
