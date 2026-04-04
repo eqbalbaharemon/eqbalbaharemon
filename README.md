@@ -13,46 +13,78 @@ I developed this standardized JavaScript template for deep eCommerce tracking in
 ```javascript
 /**
  * Professional eCommerce Tracking Template
- * Purpose: Standardizing GTM Data Layer for GA4/Ads tracking
+ * Version: 2.0.1
+ * Purpose: Standardizing GTM Data Layer for GA4 & Google Ads Enhanced Conversions
  */
 
 (function() {
-  // 1. Define backend variables (Mapping needed based on CMS)
-  var orderID = '{{order_id_from_backend}}';      
-  var totalPrice = '{{total_price_from_backend}}'; 
-  var userAddress = '{{user_address_from_backend}}'; 
-  var userCity = '{{user_city_from_backend}}';
-  var userCountry = '{{user_country_from_backend}}';
-  var currencyCode = '{{currency_code}}'; 
+  'use strict';
 
-  // 2. Data Layer Push with GA4 Standardized Schema
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ 'ecommerce': null }); 
-  window.dataLayer.push({
-    'event': 'purchase',
-    'ecommerce': {
-      'transaction_id': orderID,
-      'value': parseFloat(totalPrice.toString().replace(/[^\d.]/g, '')), 
-      'currency': currencyCode,
-      'customer_details': {
-        'billing_address': userAddress,
-        'city': userCity,
-        'country': userCountry
+  /**
+   * Helper: Ensures price is a clean float
+   * Handles strings with currency symbols or commas
+   */
+  var formatNumericValue = function(value) {
+    if (value === undefined || value === null) return 0.00;
+    var cleanValue = parseFloat(value.toString().replace(/[^\d.]/g, ''));
+    return isNaN(cleanValue) ? 0.00 : cleanValue;
+  };
+
+  try {
+    // 1. Transaction & Environment Variables
+    var transactionId = '{{order_id_from_backend}}';
+    var currency = '{{currency_code}}' || 'USD';
+    var totalValue = formatNumericValue('{{total_price_from_backend}}');
+
+    // 2. Clear previous ecommerce object to prevent data bleeding
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'ecommerce': null });
+
+    // 3. Push DataLayer
+    window.dataLayer.push({
+      'event': 'purchase',
+      'ecommerce': {
+        'transaction_id': transactionId,
+        'value': totalValue,
+        'tax': formatNumericValue('{{tax_amount}}'),
+        'shipping': formatNumericValue('{{shipping_amount}}'),
+        'currency': currency,
+        'coupon': '{{coupon_code}}' || '',
+        'items': [
+          {
+            'item_id': '{{item_id}}',
+            'item_name': '{{item_name}}',
+            'price': formatNumericValue('{{item_price}}'),
+            'item_brand': '{{item_brand}}',
+            'item_category': '{{item_category}}',
+            'quantity': parseInt('{{item_quantity}}') || 1
+          }
+        ]
+      },
+      // User Data for Enhanced Conversions (Google Ads)
+      'user_data': {
+        'email': '{{user_email}}',
+        'phone_number': '{{user_phone}}',
+        'address': {
+          'first_name': '{{first_name}}',
+          'last_name': '{{last_name}}',
+          'street': '{{user_address_from_backend}}',
+          'city': '{{user_city_from_backend}}',
+          'region': '{{user_region}}',
+          'postal_code': '{{user_postal_code}}',
+          'country': '{{user_country_from_backend}}'
+        }
       },
       'metadata': {
         'timestamp': new Date().toISOString(),
-        'page_url': window.location.href
-      },
-      'items': [
-        {
-          'item_id': '{{item_id}}',
-          'item_name': '{{item_name}}',
-          'price': parseFloat('{{item_price}}'),
-          'quantity': 1
-        }
-      ]
-    }
-  });
+        'page_url': window.location.href,
+        'user_agent': navigator.userAgent
+      }
+    });
+
+  } catch (error) {
+    console.error('DataLayer Purchase Error:', error);
+  }
 })();
 ```
 
