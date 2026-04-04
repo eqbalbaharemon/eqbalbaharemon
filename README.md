@@ -103,9 +103,7 @@ Performance Optimized: Uses an asynchronous loading pattern for the YouTube API.
 💻 Implementation Code:
 
 
-
-
-```The Code
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
